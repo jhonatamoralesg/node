@@ -15,7 +15,12 @@ return result.rows;
  }
 };
 
-
+const create = async(title)=>{
+const query="INSERT INTO todos (title) VALUES ($1) RETURNING *";
+const {rows}= await pool.query(query, [title]);
+// el 
+return rows[0];
+};
 
 
 
@@ -23,7 +28,7 @@ return result.rows;
 export const todoModel={
 
     findAll,
-    
+    create,
     
     };
     
